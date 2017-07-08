@@ -1,0 +1,14 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "IOTA api calls test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kaichao",
+  "license": "ISC",
+  "dependencies": {
+    "iota.lib.js": "^0.3.5"
+  }
+}
