@@ -3,7 +3,6 @@ var iota = new IOTA({
     'provider': 'http://yourhost:yourport'
 });
 
-// now you can start using all of the functions
 iota.api.getNodeInfo(function(error, success) {
     if (error) {
         console.error(error);
