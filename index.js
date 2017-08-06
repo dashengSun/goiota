@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env node --harmony
 
 var program = require("commander");
 var co = require("co");
@@ -34,8 +34,10 @@ program
         if (!error) {
           console.log(success)
           console.log("no error");
+          process.exit(0)
         } else {
           console.log("we have error: " + error);
+          process.exit(1)
         }
       });
     });
