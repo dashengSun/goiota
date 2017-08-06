@@ -10,8 +10,4 @@ iota.api.getNodeInfo(function(error, success) {
     } else {
         console.log(success);
     }
-})
-
-
-// you can also get the version
-// iota.version
+});
