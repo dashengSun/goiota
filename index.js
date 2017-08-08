@@ -30,7 +30,20 @@ program
       var seed = yield prompt.password('seed: ');
       var addr = yield prompt('address: ');
 
-      iota.api.sendTransfer(seed, depth, minWeightMagnitude, [{"address": addr, "value": parseInt(amount), "message": "", "tag": ""}], function(error, success) {
+      var addresses = addr.split(" ");
+      var transfers = [];
+      for (i = 0; i < addresses.length; i++) {
+        let transfer = {
+          "address": addresses[i],
+          "value": parseInt(amount),
+          "message": "",
+          "tag": ""
+        };
+        transfers.push(transfer);
+      }
+
+      console.log(transfers)
+      iota.api.sendTransfer(seed, depth, minWeightMagnitude, transfers, function(error, success) {
         if (!error) {
           console.log(success)
           console.log("no error");
