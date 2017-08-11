@@ -12,7 +12,7 @@ npm install
 ```
 
 ### Modify configuration
-First thing comes first, modify the `http://yourhost:yourport` with the remote host you want to connect.
+First thing comes first, modify the `http://yourhost:yourport` in the `index.js` with the remote host you want to connect.
 
 ### Install CLI
 ```

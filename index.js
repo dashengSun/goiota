@@ -9,7 +9,7 @@ var ccurl = require("./js/ccurl-interface");
 const path = require("path");
 
 global.iota = new IOTA({
-  'provider': 'http://yourhost:yourport'
+  'provider': 'http://mainnet.necropaz.com:14500'
 });
 
 var connection = {
