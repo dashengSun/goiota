@@ -13,6 +13,6 @@
     "co-prompt": "^1.0.0",
     "commander": "^2.11.0",
     "ffi": "^2.2.0",
-    "iota.lib.js": "^0.3.8"
+    "iota.lib.js": "^0.4.0"
   }
 }
