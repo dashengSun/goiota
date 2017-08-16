@@ -29,9 +29,9 @@ program
   .action(function(amount) {
     co(function *() {
       var seed = yield prompt.password('seed: ');
-      var addr = yield prompt('address: ');
+      var addr = yield prompt.multiline('address: ');
 
-      var addresses = addr.split(" ");
+      var addresses = addr.replace(/\s+/g, ' ').split(" ");
       var transfers = [];
       for (i = 0; i < addresses.length; i++) {
         let transfer = {
@@ -43,6 +43,7 @@ program
         transfers.push(transfer);
       }
 
+      console.log("You are sending to these addresses:");
       console.log(transfers)
       iota.api.sendTransfer(seed, depth, minWeightMagnitude, transfers, function(error, success) {
         if (!error) {

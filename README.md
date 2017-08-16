@@ -25,6 +25,8 @@ Note: the unit is `i`.
 goiota <the iotas you want to sent>
 ```
 
+Use multiple lines to send multiple addresses.
+
 ## NPM registry setup
 - [ ] remove the mannual config
 - [ ] publish the npm
