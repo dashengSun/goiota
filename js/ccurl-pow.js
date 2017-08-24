@@ -22,22 +22,35 @@ var ccurlPow = function(newTrytes, minWeightMagnitude, callback) {
 
   client.on('data', function (buf) {
     if (buf.length == 16) {
+
     } else if (buf.length == 2673) {
       trytesAfterPOW = buf.toString();
       client.destroy();
 
       callback(null, trytesAfterPOW)
 
-    } else if (buf.length < 2673 && buf.length > 16 && trytesAfterPOW.length < 2673) {
+    } else if (buf.length < 2673 && buf.length > 16) {
+      if (trytesAfterPOW.length < 2673) {
+        trytesAfterPOW += buf.toString();
+      } else {
+        console.log("error");
+        console.log(trytesAfterPOW)
+        client.destroy()
 
-      trytesAfterPOW += buf.toString();
+        callback("error")
+      }
       if (trytesAfterPOW.length >= 2673) {
         client.destroy();
 
         callback(null, trytesAfterPOW);
       }
+    } else if (buf.length == 2689) {
+      trytesAfterPOW = buf.toString('utf8', 16, 2689);
+      client.destroy();
+
+      callback(null, trytesAfterPOW)
     } else {
-      console.log("error");
+      console.log("error:" + buf.length);
       console.log(trytesAfterPOW)
       client.destroy()
 
