@@ -44,10 +44,10 @@ program
       }
 
       console.log("You are sending to these addresses:");
-      console.log(transfers)
+      console.log(transfers);
       iota.api.sendTransfer(seed, depth, minWeightMagnitude, transfers, function(error, success) {
         if (!error) {
-          console.log(success)
+          console.log(success);
           console.log("no error");
           process.exit(0)
         } else {
@@ -67,8 +67,6 @@ iota.api.attachToTangle = function(trunkTransaction, branchTransaction, minWeigh
     console.log("Light Wallet: ccurl.ccurlHashing finished:");
     if (error) {
       console.log(error);
-    } else {
-      console.log(success);
     }
     if (callback) {
       return callback(error, success);

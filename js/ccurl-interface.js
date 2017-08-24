@@ -147,8 +147,6 @@ var ccurlHashing = function(trunkTransaction, branchTransaction, minWeightMagnit
             var newTrytes = iotaObj.utils.transactionTrytes(txObject);
 
             // cCurl updates the nonce as well as the transaction hash
-            console.log('------------ send trytes ------------')
-            console.log(newTrytes)
             ccurlPOWRemote.ccurlPow(newTrytes, minWeightMagnitude, function(error, returnedTrytes) {
 
                 if (error) {
@@ -180,8 +178,6 @@ var ccurlHashing = function(trunkTransaction, branchTransaction, minWeightMagnit
             var newTrytes = iotaObj.utils.transactionTrytes(txObject);
 
             // cCurl updates the nonce as well as the transaction hash
-            console.log('------------  send trytes ------------')
-            console.log(newTrytes)
             ccurlPOWRemote.ccurlPow(newTrytes, minWeightMagnitude, function(error, returnedTrytes) {
 
                 if (error) {
