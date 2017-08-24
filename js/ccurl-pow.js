@@ -52,7 +52,6 @@ var ccurlPow = function(newTrytes, minWeightMagnitude, callback) {
   });
 
   client.on('close', function() {
-    console.log('connection closed.');
   });
 }
 
