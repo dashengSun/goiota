@@ -1,5 +1,6 @@
 var ffi = require('ffi');
 var isInitialized = false;
+var ccurlPOWRemote = require("./ccurl-pow");
 
 var ccurlProvider = function(ccurlPath) {
     if (!ccurlPath) {
@@ -58,10 +59,10 @@ var ccurlInterruptAndFinalize = function(libccurl) {
     ccurlFinalize(libccurl);
 }
 
-var ccurlHashing = function(libccurl, trunkTransaction, branchTransaction, minWeightMagnitude, trytes, callback) {
-    if (!libccurl.hasOwnProperty("ccurl_pow")) {
-        return callback(new Error("Hashing not available"));
-    }
+var ccurlHashing = function(trunkTransaction, branchTransaction, minWeightMagnitude, trytes, callback) {
+    // if (!libccurl.hasOwnProperty("ccurl_pow")) {
+    //     return callback(new Error("Hashing not available"));
+    // }
 
     var iotaObj = iota; //During transitioning to keccak only oldIota is doing POW
 
@@ -146,7 +147,9 @@ var ccurlHashing = function(libccurl, trunkTransaction, branchTransaction, minWe
             var newTrytes = iotaObj.utils.transactionTrytes(txObject);
 
             // cCurl updates the nonce as well as the transaction hash
-            libccurl.ccurl_pow.async(newTrytes, minWeightMagnitude, function(error, returnedTrytes) {
+            console.log('------------ send trytes ------------')
+            console.log(newTrytes)
+            ccurlPOWRemote.ccurlPow(newTrytes, minWeightMagnitude, function(error, returnedTrytes) {
 
                 if (error) {
                     return callback(error);
@@ -177,7 +180,9 @@ var ccurlHashing = function(libccurl, trunkTransaction, branchTransaction, minWe
             var newTrytes = iotaObj.utils.transactionTrytes(txObject);
 
             // cCurl updates the nonce as well as the transaction hash
-            libccurl.ccurl_pow.async(newTrytes, minWeightMagnitude, function(error, returnedTrytes) {
+            console.log('------------  send trytes ------------')
+            console.log(newTrytes)
+            ccurlPOWRemote.ccurlPow(newTrytes, minWeightMagnitude, function(error, returnedTrytes) {
 
                 if (error) {
                     return callback(error);

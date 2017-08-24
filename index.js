@@ -9,8 +9,8 @@ var ccurl = require("./js/ccurl-interface");
 const path = require("path");
 
 global.iota = new IOTA({
-  "host": "http://mainnet.necropaz.com",
-  "port": "14500"
+  "host": "http://wudanyu.xicp.net",
+  "port": "39999"
 });
 
 var connection = {
@@ -20,7 +20,7 @@ var connection = {
 var depth = 3;
 var minWeightMagnitude = 15;
 
-connection.ccurlProvider = ccurl.ccurlProvider(connection.ccurlPath);
+// connection.ccurlProvider = ccurl.ccurlProvider(connection.ccurlPath);
 
 program
   .arguments('<amount>')
@@ -63,7 +63,7 @@ program
 iota.api.attachToTangle = function(trunkTransaction, branchTransaction, minWeightMagnitude, trytes, callback) {
   console.log("Light Wallet: localAttachToTangle");
 
-  ccurl.ccurlHashing(connection.ccurlProvider, trunkTransaction, branchTransaction, minWeightMagnitude, trytes, function(error, success) {
+  ccurl.ccurlHashing(trunkTransaction, branchTransaction, minWeightMagnitude, trytes, function(error, success) {
     console.log("Light Wallet: ccurl.ccurlHashing finished:");
     if (error) {
       console.log(error);
@@ -78,12 +78,12 @@ iota.api.attachToTangle = function(trunkTransaction, branchTransaction, minWeigh
   })
 };
 
-iota.api.interruptAttachingToTangle = function(callback) {
-  console.log("Light Wallet: localInterruptAttachingToTangle");
-
-  ccurl.ccurlInterrupt(connection.ccurlProvider);
-
-  if (callback) {
-    return callback();
-  }
-};
+// iota.api.interruptAttachingToTangle = function(callback) {
+//   console.log("Light Wallet: localInterruptAttachingToTangle");
+//
+//   ccurl.ccurlInterrupt(connection.ccurlProvider);
+//
+//   if (callback) {
+//     return callback();
+//   }
+// };
