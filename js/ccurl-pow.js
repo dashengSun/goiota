@@ -39,7 +39,7 @@ var ccurlPow = function(newTrytes, minWeightMagnitude, callback) {
 
         callback("error")
       }
-      if (trytesAfterPOW.length >= 2673) {
+      if (trytesAfterPOW.length == 2673) {
         client.destroy();
 
         callback(null, trytesAfterPOW);
